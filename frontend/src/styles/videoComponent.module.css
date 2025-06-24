@@ -1,0 +1,229 @@
+/* ====== Base Layout ====== */
+.meetVideoContainer {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #0f172a, #1e293b);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* ====== Local User Video ====== */
+.meetUserVideo {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    height: 20vh;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border: 2px solid #334155;
+    z-index: 9;
+}
+
+/* ====== Control Buttons ====== */
+.buttonContainers {
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    z-index: 10;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+.buttonContainers svg {
+    font-size: 2.5rem;
+    transition: transform 0.2s ease;
+}
+
+.buttonContainers svg:hover {
+    transform: scale(1.15);
+}
+
+/* ====== Remote Video Grid ====== */
+.conferenceView {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    margin-top: 50px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.conferenceView video {
+    width: 32vw;
+    height: 25vh;
+    min-width: 260px;
+    border-radius: 16px;
+    border: 2px solid #475569;
+    object-fit: cover;
+    background: #000;
+}
+
+/* ====== Chat Sidebar ====== */
+.chatRoom {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 28vw;
+    min-width: 300px;
+    background: #1e293b;
+    color: #f1f5f9;
+    border-left: 2px solid #334155;
+    box-shadow: -5px 0 10px rgba(0,0,0,0.2);
+    z-index: 20;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chatContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.chattingDisplay {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding-right: 5px;
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 transparent;
+}
+
+.chattingDisplay::-webkit-scrollbar {
+    width: 5px;
+}
+.chattingDisplay::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 5px;
+}
+
+.chattingDisplay > div {
+    background-color: #334155;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    word-break: break-word;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.05);
+}
+
+.chattingDisplay p:first-child {
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #fbbf24;
+}
+
+/* Chat Input */
+.chattingArea {
+    display: flex;
+    gap: 10px;
+    padding-top: 12px;
+    background: #1e293b;
+}
+
+.chattingArea input,
+.chattingArea .MuiInputBase-root {
+    background: #334155 !important;
+    color: white !important;
+    border-radius: 8px !important;
+    width: 100%;
+}
+
+.chattingArea button {
+    background-color: #38bdf8 !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.chattingArea button:hover {
+    background-color: #0ea5e9 !important;
+}
+
+
+/* ========== RESPONSIVE QUERIES ========== */
+
+/* Tablet (max 1024px) */
+@media (max-width: 1024px) {
+    .chatRoom {
+        width: 40vw;
+    }
+
+    .conferenceView video {
+        width: 45vw;
+        height: 22vh;
+    }
+}
+
+/* Mobile (max 768px) */
+@media (max-width: 768px) {
+    .chatRoom {
+        width: 100%;
+        position: fixed;
+        height: 100vh;
+        z-index: 30;
+    }
+
+    .meetUserVideo {
+        height: 16vh;
+        bottom: 80px;
+        left: 10px;
+    }
+
+    .conferenceView {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .conferenceView video {
+        width: 90vw;
+        height: 25vh;
+    }
+
+    .buttonContainers {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .buttonContainers svg {
+        font-size: 2rem;
+    }
+
+    .chattingArea {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .chattingArea button {
+        width: 100%;
+    }
+}
+
+/* Small phones (max 480px) */
+@media (max-width: 480px) {
+    .meetUserVideo {
+        height: 14vh;
+    }
+
+    .chattingDisplay p:first-child {
+        font-size: 0.9rem;
+    }
+
+    .chattingDisplay p:last-child {
+        font-size: 0.85rem;
+    }
+}
